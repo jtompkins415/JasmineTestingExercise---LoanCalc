@@ -10,5 +10,7 @@ it("should return a result with 2 decimal places", function() {
 });
 
 it('should return error message when entered falsly', function(){
-  expect(calculateMonthlyPayment({amount: 'one hundred thousand', years: "five", rate: "7"})).toBe('We Only Accept Numbers');
+  expect(calculateMonthlyPayment({amount: 'one hundred thousand', years: 5, rate: 2})).toBe('We Only Accept Numbers');
+  expect(calculateMonthlyPayment({amount: 100000, years: 'five', rate: 2})).toBe('We Only Accept Numbers');
+  expect(calculateMonthlyPayment({amount: 100000, years: 5, rate: 'two'})).toBe('We Only Accept Numbers');
 })

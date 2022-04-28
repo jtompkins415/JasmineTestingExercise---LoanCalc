@@ -45,7 +45,11 @@ function calculateMonthlyPayment(inputs) {
  let p = inputs.amount;
  let i = (inputs.rate / 100) / 12;
  let n = Math.floor(inputs.years * 12);
- if(isNaN(Number(p, i, n))){
+ if(isNaN(Number(p))){
+   return 'We Only Accept Numbers';
+ } else if (isNaN(Number(inputs.rate))){
+   return 'We Only Accept Numbers';
+ } else if (isNaN(Number(inputs.years))){
    return 'We Only Accept Numbers';
  }
  return ((p * i)/ (1 - Math.pow((1 + i ), -n))).toFixed(2);
