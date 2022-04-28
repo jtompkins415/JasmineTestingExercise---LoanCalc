@@ -21,7 +21,7 @@ function getCurrentUIValues() {
 // Put some default values in the inputs
 // Call a function to calculate the current monthly payment
 function setupIntialValues() {
-  let inputs = { amount: 5000, years: 10, rate: 6.5 };
+  let inputs = { amount: 10000, years: 5, rate: 2.5 };
   let amount = document.getElementById('loan-amount');
   amount.value = inputs.amount; 
   let years = document.getElementById('loan-years');
@@ -43,8 +43,11 @@ function update() {
 // that always has 2 decimal places.
 function calculateMonthlyPayment(inputs) {
  let p = inputs.amount;
- let i = (inputs.rate * 100) / 12;
+ let i = (inputs.rate / 100) / 12;
  let n = Math.floor(inputs.years * 12);
+ if(isNaN(Number(p))){
+   return 'We Only Accept Numbers';
+ }
  return ((p * i)/ (1 - Math.pow((1 + i ), -n))).toFixed(2);
 }
 
